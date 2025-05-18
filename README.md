@@ -14,3 +14,18 @@ implemented:
 - `DijkstraSearch<V>`
 - and demonstrate it all in `Main`
 
+##  Structure
+
+```java
+Vertex<V> {
+    V data;
+    Map<Vertex<V>, Double> adjacentVertices;
+}
+
+WeightedGraph<V> {
+    Set<Vertex<V>> vertices;
+    void addEdge(Vertex from, Vertex to, double weight);
+}
+
+BreadthFirstSearch<V> extends Search<V>
+DijkstraSearch<V> extends Search<V>
