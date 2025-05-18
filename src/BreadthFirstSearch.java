@@ -17,7 +17,7 @@ public class BreadthFirstSearch<V> implements Search<V> {
 
         while (!queue.isEmpty()) {
             Vertex<V> current = queue.poll();
-            for (Vertex<V> neighbor : current.getNeighbors().keySet()) {
+            for (Vertex<V> neighbor : current.getAdjacentVertices().keySet()) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     edgeTo.put(neighbor, current);

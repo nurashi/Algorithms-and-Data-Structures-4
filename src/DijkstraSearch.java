@@ -18,7 +18,7 @@ public class DijkstraSearch<V> implements Search<V> {
         while (!queue.isEmpty()) {
             Vertex<V> current = queue.poll();
 
-            for (Map.Entry<Vertex<V>, Double> entry : current.getNeighbors().entrySet()) {
+            for (Map.Entry<Vertex<V>, Double> entry : current.getAdjacentVertices().entrySet()) {
                 Vertex<V> neighbor = entry.getKey();
                 double weight = entry.getValue();
                 double newDist = distance.get(current) + weight;
