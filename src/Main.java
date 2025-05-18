@@ -7,37 +7,44 @@ public class Main {
         Vertex<String> A = new Vertex<>("A");
         Vertex<String> B = new Vertex<>("B");
         Vertex<String> C = new Vertex<>("C");
+
         Vertex<String> D = new Vertex<>("D");
         Vertex<String> E = new Vertex<>("E");
 
-        graph.addVertex(A);
-        graph.addVertex(B);
-        graph.addVertex(C);
-        graph.addVertex(D);
-        graph.addVertex(E);
+        graph.addEdge(A, B, 4.0);
+        
+        graph.addEdge(A, C, 2.0);
 
-        graph.addEdge(A, B, 4);
-        graph.addEdge(A, C, 2);
-        graph.addEdge(B, D, 5);
-        graph.addEdge(C, D, 8);
-        graph.addEdge(C, E, 10);
-        graph.addEdge(D, E, 2);
+        graph.addEdge(B, C, 5.0);
+        graph.addEdge(B, D, 10.0);
 
-        BreadthFirstSearch<String> bfs = new BreadthFirstSearch<>(graph, A);
-        printPath(bfs.getPathTo(E));
+        graph.addEdge(C, E, 3.0);
+        graph.addEdge(E, D, 4.0);
 
-        DijkstraSearch<String> dijkstra = new DijkstraSearch<>(graph, A);
-        printPath(dijkstra.getPathTo(E));
-    }
 
-    private static void printPath(List<Vertex<String>> path) {
-        if (path == null) {
-            System.out.println("No path foud");
-            return;
+        for (Vertex<String> v : graph.getVertices()) {
+            System.out.print(v.getData() + " -> ");
+            for (var entry : v.getAdjacentVertices().entrySet()) {
+                System.out.print(entry.getKey().getData() + entry.getValue());
+
+            }
+            System.out.println();
         }
-        for (Vertex<String> vertex : path) {
-            System.out.print(vertex + " - ");
+
+        Search<String> bfs = new BreadthFirstSearch<>(graph, A);
+        List<Vertex<String>> pathBFS = bfs.getPathTo(D);
+        for (Vertex<String> v : pathBFS) {
+            System.out.print(v.getData() + " ");
+
         }
+
+        Search<String> dijkstra = new DijkstraSearch<>(graph, A);
+        List<Vertex<String>> pathDijkstra = dijkstra.getPathTo(D);
+        for (Vertex<String> v : pathDijkstra) {
+
+            System.out.print(v.getData() + " ");
+        }
+
         System.out.println();
     }
 }
