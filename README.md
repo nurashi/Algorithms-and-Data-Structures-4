@@ -1,6 +1,6 @@
 #  Graph Algorithms: BFS & Dijkstra
 
-This assignment implements graph algorithms like Breadth-First Search and Dijkstra using a custom `Vertex` class instead of traditional `Edge` class structure
+This assignment implements graph algorithms like Breadth-First Search and Dijkstra using a custom `Vertex` class.
 
 ---
 
